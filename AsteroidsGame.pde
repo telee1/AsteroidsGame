@@ -2,6 +2,8 @@ Spaceship hi = new Spaceship();
 // Asteroid [] hello = new Asteroid[5];
 ArrayList <Asteroid> hello = new ArrayList <Asteroid>();
 Star [] sup = new Star [100];
+// Bullet bob = new Bullet(hi);
+ArrayList <Bullet> bob = new ArrayList <Bullet>();
 
 
 public void setup() 
@@ -38,13 +40,23 @@ public void draw()
 
   	if(dist((float)(hello.get(i).getCenterX()), (float)(hello.get(i).getCenterY()), (float)(hi.getCenterX()), (float)(hi.getCenterY()))<20)
   		hello.remove(i);
-
-  	
   }
 
-  
+  // bob.show();
+  // bob.move();
+  for (int i =0; i<bob.size();i++)
+  {
+  	bob.get(i).show();
+  	bob.get(i).move();
+  }
 
 }
+
+public void mousePressed()
+{
+	bob.add(new Bullet(hi));
+}
+
 
 public void keyPressed()
 {
