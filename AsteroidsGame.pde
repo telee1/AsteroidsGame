@@ -1,5 +1,8 @@
 Spaceship hi = new Spaceship();
+// Asteroid [] hello = new Asteroid[5];
+ArrayList <Asteroid> hello = new ArrayList <Asteroid>();
 Star [] sup = new Star [100];
+
 
 public void setup() 
 {
@@ -8,16 +11,38 @@ public void setup()
   {
   	sup[i] = new Star();
   }
+  
+
+  for (int i = 0; i<= 5; i++)
+  {
+  	hello.add(new Asteroid());
+  }
 }
+
+
 public void draw() 
 {
 	background(0);
   hi.show();
   hi.move();
+  
   for (int i =0; i<sup.length; i++)
   {
   	sup[i].show();
   }
+
+  for (int i = 0; i<hello.size(); i++)
+  {
+  	hello.get(i).show();
+  	hello.get(i).move();
+
+  	if(dist((float)(hello.get(i).getCenterX()), (float)(hello.get(i).getCenterY()), (float)(hi.getCenterX()), (float)(hi.getCenterY()))<20)
+  		hello.remove(i);
+
+  	
+  }
+
+  
 
 }
 
@@ -39,14 +64,7 @@ public void keyPressed()
 		hi.setDirectionX(0);
 		hi.setDirectionY(0);
 		hi.setPointDirection(((int)(Math.random()*360)+1));
-
-		
-		
-		
 	}
-	
-
-	
 	
 
 }
