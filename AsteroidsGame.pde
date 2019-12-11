@@ -4,6 +4,7 @@ ArrayList <Asteroid> hello = new ArrayList <Asteroid>();
 Star [] sup = new Star [100];
 // Bullet bob = new Bullet(hi);
 ArrayList <Bullet> bob = new ArrayList <Bullet>();
+ArrayList <SmallAsteroid> hey = new ArrayList <SmallAsteroid>();
 
 
 public void setup() 
@@ -15,9 +16,14 @@ public void setup()
   }
   
 
-  for (int i = 0; i<= 5; i++)
+  for (int i = 0; i<= 10; i++)
   {
   	hello.add(new Asteroid());
+  }
+
+  for (int i =0; i<=10; i++)
+  {
+  	hey.add(new SmallAsteroid());
   }
 }
 
@@ -50,6 +56,42 @@ public void draw()
   	bob.get(i).move();
   }
 
+  for (int i =0; i<hey.size();i++)
+  {
+  	hey.get(i).show();
+  	hey.get(i).move();
+  }
+
+for (int i =0; i<hello.size(); i++)
+	{
+		for (int y=0; y<bob.size(); y++)
+		{
+			if (dist((float)(hello.get(i).getCenterX()), (float)(hello.get(i).getCenterY()), (float)(bob.get(y).getCenterX()), (float)(bob.get(y).getCenterY()))<20)
+  			{
+  			hello.remove(i);
+  			bob.remove(y);
+  			break;
+			}
+		}
+	}	
+
+
+for (int i =0; i<hey.size(); i++)
+	{
+		for (int y=0; y<bob.size(); y++)
+		{
+			if (dist((float)(hey.get(i).getCenterX()), (float)(hey.get(i).getCenterY()), (float)(bob.get(y).getCenterX()), (float)(bob.get(y).getCenterY()))<20)
+  			{
+  			hey.remove(i);
+  			bob.remove(y);
+  			break;
+			}
+		}
+	}	
+
+
+
+
 }
 
 public void mousePressed()
@@ -61,9 +103,9 @@ public void mousePressed()
 public void keyPressed()
 {
 	if (key == 'l')
-		hi.turn(-5);
+		hi.turn(-8);
 	if (key == 'r')
-		hi.turn(5);
+		hi.turn(8);
 	if (key == 'a')
 		hi.accelerate(0.3);
 

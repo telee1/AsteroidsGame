@@ -4,8 +4,6 @@ class Asteroid extends Floater
 
 	public Asteroid()
 	{
- 
-
 		corners = 6;
 		xCorners = new int[corners];
 		yCorners = new int[corners];
@@ -50,5 +48,45 @@ class Asteroid extends Floater
 	{
 		return myCenterY;
 	}
+
+}
+
+
+class SmallAsteroid extends Asteroid
+{
+
+	private int rotSpeed;
+	public SmallAsteroid()
+	{
+		corners = 5;
+		xCorners = new int[corners];
+		yCorners = new int[corners];
+		xCorners[0] = -5;
+		yCorners[0] = -4;
+		xCorners[1] = 4;
+		yCorners[1] = -4;
+		xCorners[2] = 6;
+		yCorners[2] = 0;
+		xCorners[3] = 3;
+		yCorners[3] = 5;
+		xCorners[4] = -5;
+		yCorners[4] = 4;
+		
+
+		myDirectionX = (int)(Math.random()*3)-1;
+		myDirectionY = (int)(Math.random()*3)-1;
+
+		myCenterX = (int)(Math.random()*400)-1;
+		myCenterY = (int)(Math.random()*400)-1;
+		myPointDirection = (int)(Math.random()*360)-1;
+		
+		myColor = color(201, 200);
+
+
+		rotSpeed = (int)(Math.random()*10)-2;
+
+
+	}
+
 
 }
